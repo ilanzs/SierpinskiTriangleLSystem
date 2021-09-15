@@ -1,5 +1,6 @@
 let rules = [];
 let sentence;
+let len = 700;
 rules[0] = {
   prev: "F",
   next: "F-G+F+G-F"
@@ -10,8 +11,6 @@ rules[1] = {
   next: "GG"
 }
 
-
-let generateButton;
 
 function setup() {
   createCanvas(700, 700);
@@ -31,6 +30,7 @@ function mousePressed() {
 }
 
 function generate() {
+  len *= 0.5;
   let nextSentence = "";
   let prevSentence = "";
   for (let i in sentence) {
@@ -51,9 +51,7 @@ function generate() {
 }
 
 function show() {
-  let len = 1;
   stroke(255);
-  fill(255);
   for (let letter in sentence) {
     if (sentence[letter] == "F" || sentence[letter] == "G") {
       line(0, 0, 0, -len);
